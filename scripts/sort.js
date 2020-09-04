@@ -238,6 +238,11 @@ itemsCountInput.addEventListener('input', evt => {
 generateButton.addEventListener('click', () => {
     generateButton.classList.add(buttonDisabled);
     generateButton.setAttribute('disabled', '');
+    originArray = [];
+    arrayItemsCount = 0;
+    inputedArray.textContent = originArray;
+    sortButton.classList.remove(sortButtonDisabled);
+    sortButton.removeAttribute('disabled');
     generateArray();
     showOriginArray();
 });

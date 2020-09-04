@@ -1,0 +1,9 @@
+@import url(./__title/header__title.css);
+
+.header {
+    margin: auto;
+    padding: 80px 70px 60px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+}

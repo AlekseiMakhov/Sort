@@ -19,7 +19,7 @@
 # Project "Sorting"
 
 ### Why
-The project was developed to show an advantage of the quick sorting algorithm with 2 outcome parameters: the number of cycles and duration in milliseconds.
+The project was developed to show an advantage of the quick sorting algorithm with 2 output parameters: the count of cycles and duration in milliseconds.
 
 ### What
 2 ways of the source array input were implemented: manual and auto for big-data analysis.

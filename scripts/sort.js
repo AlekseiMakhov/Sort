@@ -235,3 +235,42 @@ itemsCountInput.addEventListener('input', evt => {
     }
 });
 
+generateButton.addEventListener('click', () => {
+    generateButton.classList.add(buttonDisabled);
+    generateButton.setAttribute('disabled', '');
+    originArray = [];
+    arrayItemsCount = 0;
+    inputedArray.textContent = originArray;
+    sortButton.classList.remove(sortButtonDisabled);
+    sortButton.removeAttribute('disabled');
+    generateArray();
+    showOriginArray();
+});
+
+sortButton.addEventListener('click', () => {
+    let numberArray =[];    //массив чисел для сортировки
+    //Преобразуем исходный массив в массив чисел для 
+    //корректной работы алгоритмов
+    for (let i = 0; i < originArray.length; i++) {
+        numberArray[i] = Number(originArray[i]);
+    } 
+    sortButton.classList.add(sortButtonDisabled);
+    sortButton.setAttribute('disabled', '');
+
+    line3.classList.remove(lineInvisible);
+    sortedArrayBlock.classList.remove(arrayInvisible);
+
+    // Выводим результаты
+    resultBlock.classList.remove(arrayInvisible);
+    let startTime = new Date().getTime();
+    getUsualSort(numberArray);
+    let endTime = new Date().getTime();
+    usortTime.textContent = `${endTime - startTime} ms`;
+    usortCycles.textContent = `${usortCounter}`;
+
+    startTime = new Date().getTime();
+    sortedArrayArea.textContent = getQuicksSort(numberArray);
+    endTime = new Date().getTime();
+    qsortTime.textContent = `${endTime - startTime} ms`;
+    qsortCycles.textContent = `${qsortCounter}`;
+});

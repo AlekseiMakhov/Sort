@@ -160,30 +160,51 @@ function showOriginArray() {
     inputedArray.textContent = originArray;
 }
 
-//Ввод элемента массива
-function inputArrayItem(evt) {
-    if (!evt.target.value) {
+function checkInput() {
+    if (arrItemInput.value >= 0 && arrItemInput.value < 10000) {
+        originArray.push(arrItemInput.value);
+        arrayItemsCount += 1;
+        arrItemInput.value = '';
+    }
+}
 
+ //Ввод элемента массива
+ function inputArrayItem(evt) {
+    if (!arrItemInput.value) {
+        addButton.classList.add(buttonDisabled);
+        addButton.setAttribute('disabled', '');
     } else {
-        if (evt.key === 'Enter') {
-            if (evt.target.value >= 0 && evt.target.value < 10000) {
-                
-                originArray.push(evt.target.value);
-                arrayItemsCount += 1;
-                evt.target.value = '';
-            }
-        }
-        if (arrayItemsCount > 0) {
-        }
-        showOriginArray();
+        addButton.classList.remove(buttonDisabled);
+        addButton.removeAttribute('disabled', '');       
     }
 }
 
 //Обработчик события для ввода элемента массива
-arrItemInput.addEventListener('keydown', inputArrayItem);
+arrItemInput.addEventListener('input', inputArrayItem);
+
+arrItemInput.addEventListener('keydown', evt => {
+    if (!evt.target.value) {
+    } else {    
+        if (evt.key === 'Enter') {
+            addButton.classList.add(buttonDisabled);
+            addButton.setAttribute('disabled', '');
+            checkInput();
+            if (arrayItemsCount > 0) {
+                showOriginArray();
+            }
+        }   
+    }     
+});
 
 //Эта кнопка отказывается работать
-//addButton.addEventListener('click', inputArrayItem);
+addButton.addEventListener('click', evt => {
+    addButton.classList.add(buttonDisabled);
+    addButton.setAttribute('disabled', '');
+    checkInput();
+    showOriginArray();
+ });
+
+
 
 //Генерация случайного массива
 function generateArray() {

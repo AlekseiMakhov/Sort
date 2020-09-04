@@ -1,7 +1,9 @@
 @import url(./__logo/footer__logo.css);
 
 .footer {
-    padding: 66px 70px 60px 70px;
-    margin: auto;
+    padding: 60px 70px 30px;
+    margin: auto auto 0;
+    min-width: 1280px;
     max-width: 1440px;
+    display: block;
 }

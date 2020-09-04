@@ -196,15 +196,13 @@ arrItemInput.addEventListener('keydown', evt => {
     }     
 });
 
-//Эта кнопка отказывается работать
+//Кнопка добавления элемента массива
 addButton.addEventListener('click', evt => {
     addButton.classList.add(buttonDisabled);
     addButton.setAttribute('disabled', '');
     checkInput();
     showOriginArray();
  });
-
-
 
 //Генерация случайного массива
 function generateArray() {
@@ -216,15 +214,24 @@ function generateArray() {
     }
 }
 
+//Проверка на целое число
+function isInteger(val) {
+    if (val % 1 === 0) {
+        console.log('true');
+        return true;
+    }
+    console.log('false');
+    return false;
+}
+
+//Ввод количества элементов массива
 itemsCountInput.addEventListener('input', evt => {
-    if (!evt.target.value) {
+    if (evt.target.value > 0 && evt.target.value < 100000 && (isInteger(evt.target.value))) {
+        generateButton.classList.remove(buttonDisabled);
+        generateButton.removeAttribute('disabled');
+    } else {
         generateButton.classList.add(buttonDisabled);
         generateButton.setAttribute('disabled', '');
-    } else {
-        if (evt.target.value > 0 && evt.target.value < 100000) {
-            generateButton.classList.remove(buttonDisabled);
-            generateButton.removeAttribute('disabled');
-        }
     }
 });
 
@@ -247,6 +254,7 @@ sortButton.addEventListener('click', () => {
 
     line3.classList.remove(lineInvisible);
     sortedArrayBlock.classList.remove(arrayInvisible);
+
     // Выводим результаты
     resultBlock.classList.remove(arrayInvisible);
     let startTime = new Date().getTime();

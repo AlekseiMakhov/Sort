@@ -31,4 +31,4 @@ The project was developed to show an advantage of the quick sorting algorithm wi
 Warning: a large number of array elements (over 40000) increases the simple sorting duration time dramatically.
 - “Reset” button clears all fields.
 
-* [Link to the project on gh pages](https://alekseimakhov.github.io/Sort/indexEng.html)
+* [Project on gh-pages](https://alekseimakhov.github.io/Sort/indexEng.html)
